@@ -2,7 +2,7 @@
 
 This is the github repo for the paper Structure-In-Context Reasoning and Editing of Proteins with Large Language Models. An early version is preprinted at [arxiv][https://arxiv.org/abs/2503.08179].
 
-<p align="center"><img src="https://github.com/mzc2113391/ProtTeX/blob/main/figs/cover.pdf" width="100%"></p>
+<p align="center"><img src="https://github.com/mzc2113391/ProtTeX/blob/main/figs/git_cover.png" width="100%"></p>
 
 ## Installation
 
