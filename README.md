@@ -21,7 +21,10 @@ conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=
 pip install -r requirements.txt
 ```
 
+Down load the model checkpoint from [ProtTeX](https://huggingface.co/mzcwd/ProtTeX) and put it in model directory.
+
 ## Using ProtTeX
+### function inference
 To infer the function of protein, first tokenize it.
 
 ```bash
