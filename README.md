@@ -11,8 +11,9 @@ ProtTeX is built upon [ProToken](https://github.com/issacAzazel/ProToken.git).
 
 ```bash
 git clone https://github.com/issacAzazel/ProToken.git
+git clone https://github.com/mzc2113391/ProtTeX.git
 ```
-For protein tokenization, you should install the environment following above repository.
+For protein tokenization, you should first install the environment following [ProtTeX](https://github.com/issacAzazel/ProToken.git) repository.
 
 Then, you should install the basic environment for running Hugging Face models.
 
@@ -21,7 +22,7 @@ conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=
 pip install -r requirements.txt
 ```
 
-Down load the model checkpoint from [ProtTeX](https://huggingface.co/mzcwd/ProtTeX) and put it in model directory.
+Download the model checkpoint from [ProtTeX](https://huggingface.co/mzcwd/ProtTeX) and put it in model directory.
 
 ## Using ProtTeX
 ### function inference
