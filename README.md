@@ -13,7 +13,7 @@ ProtTeX is built upon [ProToken](https://github.com/issacAzazel/ProToken.git).
 git clone https://github.com/issacAzazel/ProToken.git
 git clone https://github.com/mzc2113391/ProtTeX.git
 ```
-For protein tokenization, you should first install the environment following [ProtTeX](https://github.com/issacAzazel/ProToken.git) repository.
+For protein tokenization, you should first install the environment following [ProToken](https://github.com/issacAzazel/ProToken.git) repository.
 
 Then, you should install the basic environment for running Hugging Face models.
 
