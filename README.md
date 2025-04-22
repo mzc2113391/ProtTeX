@@ -6,22 +6,15 @@ This is the github repo for the paper Structure-In-Context Reasoning and Editing
 
 ## Installation
 
-ProtTeX is built upon [ProToken](https://github.com/issacAzazel/ProToken.git).
+ProtTeX is built upon [ProToken](https://github.com/issacAzazel/ProToken.git), we use a slightly modified version of the ProToken repository.
 
-
+Create a conda environment for ProtTeX:
 ```bash
-git clone https://github.com/issacAzazel/ProToken.git
+mamba env create -f environment.yml
 ```
-For protein tokenization, you should install the environment following above repository.
+Download the ProToken model param from [Here](https://drive.google.com/file/d/11G4ImYm14f_s2jpqrpyav8jiM25JO3uE/view?usp=sharing) and put it in ./ProToken/ckpts
+Download the ProtTeX model param from [Here](https://huggingface.co/mzcwd/ProtTeX) and put it in ./model/ProtTeX
 
-Then, you should install the basic environment for running Hugging Face models.
-
-```bash
-conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=12.4 -c pytorch -c nvidia
-pip install -r requirements.txt
-```
-
-Down load the model checkpoint from [ProtTeX](https://huggingface.co/mzcwd/ProtTeX) and put it in model directory.
 
 ## Using ProtTeX
 ### function inference
@@ -35,10 +28,19 @@ Then you can run the function inference example
 
 ```bash
 python ./scripts/function_inference.py ./input/input_dit_recon.pkl
+#output: The provided protein structure has been assessed, and it is likely to play a role in 3'-5'-RNA exonuclease activity, nucleic acid binding according to its structural characteristics.
 ```
 
 ## Citation
 ```python
+@article{lin2023tokenizing,
+    title={Tokenizing Foldable Protein Structures with Machine-Learned Artificial Amino-Acid Vocabulary},
+    author={Lin, Xiaohan and Chen, Zhenyu and Li, Yanheng and Ma, Zicheng and Fan, Chuanliu and Cao, Ziqiang and Feng, Shihao and Gao, Yi Qin and Zhang, Jun},
+    journal={bioRxiv},
+    pages={2023--11},
+    year={2023},
+    publisher={Cold Spring Harbor Laboratory}
+}
 @article{ma2025prottexstructureincontextreasoningediting,
       title={ProtTeX: Structure-In-Context Reasoning and Editing of Proteins with Large Language Models}, 
       author={Zicheng Ma and Chuanliu Fan and Zhicong Wang and Zhenyu Chen and Xiaohan Lin and Yanheng Li and Shihao Feng and Jun Zhang and Ziqiang Cao and Yi Qin Gao},

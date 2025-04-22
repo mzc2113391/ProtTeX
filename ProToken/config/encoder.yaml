@@ -1,0 +1,95 @@
+seq_len: 384
+
+common:
+  pair_feat_dim: 64
+  template_feat_dim: 9
+  single_channel: 256 # 384
+  pair_channel: 128 # 192
+  postln_scale: 1.0 # @ZhangJ.
+
+  distance_cutoff_type: "cosine"
+  cutoff: 8.0
+  max_n_neighbors: 16 # 32
+
+# pair_update_evoformer_stack_num: 4
+# single_update_transformer_stack_num: 8 # 12
+# co_update_evoformer_stack_num: 4 # 8
+# pair_update_evoformer_stack_num: 1
+# single_update_transformer_stack_num: 2
+# co_update_evoformer_stack_num: 1
+pair_update_evoformer_stack_num: 2
+single_update_transformer_stack_num: 4 # 2
+co_update_evoformer_stack_num: 2
+
+evoformer:
+  hidden_dim: 256 # 384 # attention_projection space; default: identical to single_channel; warning: need to be divided by num_head
+  num_head: 8 # 12 12 is the former training version while in AF2 the num_head = 8
+  intermediate_dim: 4 # This is an expansion factor w.r.t. single_channel
+  outerproduct_dim: 32
+  gating: True
+  sink_attention: False
+  dropout_rate: 0.05
+  norm_method: "rmsnorm" # # ["layernorm", "rmsnorm"]
+  init_method: "AF2" # ["AF2", "GLM"]
+  init_sigma: 0.02
+  swish_beta: 1.
+
+transformer:
+  hidden_dim: 256 # 384 # attention_projection space; identical to single_channel; warning: need to be divided by num_head
+  num_head: 8 # 12
+  intermediate_dim: 4 # 384//3*8 # # identical to single_channel
+  gating: False
+  sink_attention: False # True
+  dropout_rate: 0.05
+  norm_method: "rmsnorm" # # ["layernorm", "rmsnorm"]
+  init_method: "AF2" # ["AF2", "GLM"]
+  init_sigma: 0.02
+  swish_beta: 1.
+
+distogram: # @ZhangJ. ToDo
+  first_break: 2.5
+  last_break: 8.0 # 20.0
+  num_bins: 36
+  weight: 0.3
+
+template:
+  enabled: True
+  # act_fn: "relu" # @ZhangJ. ["relu", "silu", "gelu"]
+  num_channel: 128 # 192 double check, is it identical to the pair channel?
+  num_block: 1
+  init_sigma: 0.02
+  init_method: "AF2" # ["AF2", "GLM"]
+  dropout_rate: 0.05
+  norm_method: "rmsnorm"
+  swish_beta: 1.
+
+extended_structure_module:
+  sink_attention: False # @ZhangJ.
+  single_channel: 256 # 384
+  pair_channel: 128 # 192
+  num_layer: 8
+  position_scale: 10.0
+  num_channel: 256 # 384
+  num_head: 8 # 12
+  num_layer_in_transition: 3
+  num_point_qk: 4
+  num_point_v: 8
+  num_scalar_qk: 16
+  num_scalar_v: 16
+  dropout: 0.05
+  sidechain:
+    num_channel: 128
+
+rel_pos:
+  exact_distance: 8 # 16
+  num_buckets: 16 # 32
+  max_distance: 32 # 64
+
+# rel_pos:
+#   exact_distance: 24
+#   num_buckets: 48
+#   max_distance: 96
+
+inverse_folding:
+  num_channel: 128
+  num_bins: 20

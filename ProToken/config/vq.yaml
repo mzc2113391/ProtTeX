@@ -1,0 +1,16 @@
+num_code: 512 # 64 # 16 # 32 # 128 # 512
+dim_in: 256
+dim_out: 384
+dim_code: 12 # 8 # 3 # 4 # 12 # 32
+train: True
+l2_norm: True
+quantize: True 
+stochastic_sampling: False
+sampling_temperature: 0.01
+
+entropy_temperature: 1.0
+
+### lur 
+lur_mode: "cvq" # "random"
+lur_decay: 0.99 #0.8
+re_initialization_step: 1 # 20

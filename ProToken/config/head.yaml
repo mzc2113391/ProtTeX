@@ -1,0 +1,57 @@
+confidence: 
+  lddt_min: 0
+  lddt_max: 100
+  num_bins: 50
+  num_channel: 256
+  freeze_encoder_activations: True
+
+inverse_folding:
+  seq_len: 384 
+  freeze_encoder_activations: True 
+
+  distogram: # @ZhangJ. ToDo
+    first_break: 2.5
+    last_break: 20.0
+    num_bins: 36
+    weight: 0.3
+
+  template:
+    enabled: True
+    # act_fn: "relu" # @ZhangJ. ["relu", "silu", "gelu"]
+    num_channel: 128 # 192 double check, is it identical to the pair channel?
+    num_block: 1
+    init_sigma: 0.02
+    init_method: "AF2" # ["AF2", "GLM"]
+    dropout_rate: 0.05
+    norm_method: "rmsnorm"
+    swish_beta: 1.
+
+  rel_pos:
+    exact_distance: 16
+    num_buckets: 32
+    max_distance: 64
+
+  extended_structure_module:
+    sink_attention: False # @ZhangJ.
+    single_channel: 256 # 384
+    pair_channel: 128 # 192
+    num_layer: 8
+    position_scale: 10.0
+    num_channel: 256 # 384
+    num_head: 8 # 12
+    num_layer_in_transition: 3
+    num_point_qk: 4
+    num_point_v: 8
+    num_scalar_qk: 16
+    num_scalar_v: 16
+    dropout: 0.05
+    sidechain:
+      num_channel: 128
+
+  common:
+    pair_feat_dim: 64
+    template_feat_dim: 9
+    single_channel: 256 # 384
+    pair_channel: 128 # 192
+    postln_scale: 1.0 # @ZhangJ.
+

@@ -1,44 +1,8 @@
-import jax
-import jax.numpy as jnp
-import pickle as pkl
-import numpy as np
-import argparse
-import concurrent.futures
-import warnings
-import os
-import multiprocessing
-warnings.filterwarnings("ignore")
-# biopthon's warnings is annoying
-from Bio import BiopythonWarning
-warnings.simplefilter('ignore', BiopythonWarning)
 import sys
-sys.path.append('./ProToken/PROTOKEN')
-
-
-
-def arg_parse():
-    parser = argparse.ArgumentParser(description='Inputs for main.py')
-    # model config
-    parser.add_argument('--encoder_config', default="../ProToken/PROTOKEN/config/encoder.yaml", help='encoder config')
-    parser.add_argument('--decoder_config', default="../ProToken/PROTOKEN/config/decoder.yaml", help='decoder config')
-    parser.add_argument('--pdb_path', default="./case.pdb", help='pdb_path')
-    parser.add_argument('--vq_config', default='../ProToken/PROTOKEN/config/vq.yaml', help='vq config')
-    parser.add_argument('--load_ckpt_path', 
-                        default='../ProToken/ckpts/protoken_params_100000.pkl',
-                        type=str, help='Location of checkpoint file.')
-    parser.add_argument('--random_seed', type=int, default=8888, help="random seed")
-    parser.add_argument('--np_random_seed', type=int, default=18888, help="np random seed")
-
-    arguments = parser.parse_args()
-    return arguments
-args = arg_parse()
-
+sys.path.append('./ProToken')
 import os
 os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "False"
-
 from functools import partial
-from flax import linen as nn
-from flax.jax_utils import replicate
 from model.encoder import VQ_Encoder
 from model.decoder import VQ_Decoder, Protein_Decoder
 from tokenizer.vector_quantization import VQTokenizer
@@ -53,6 +17,34 @@ import datetime
 
 from config.global_config import GLOBAL_CONFIG
 from config.train_vq_config import TRAINING_CONFIG
+import argparse
+import jax
+import jax.numpy as jnp
+from flax import linen as nn
+from flax.jax_utils import replicate
+import pickle as pkl
+import numpy as np 
+
+
+def arg_parse():
+    parser = argparse.ArgumentParser(description='Inputs for main.py')
+    # model config
+    parser.add_argument('--encoder_config', default="./ProToken/config/encoder.yaml", help='encoder config')
+    parser.add_argument('--decoder_config', default="./ProToken/config/decoder.yaml", help='decoder config')
+    parser.add_argument('--pdb_path', default="./input/input.pdb", help='pdb_path')
+    parser.add_argument('--vq_config', default='./ProToken/config/vq.yaml', help='vq config')
+    parser.add_argument('--load_ckpt_path', 
+                        default='./ProToken/ckpts/protoken_params_130000.pkl',
+                        type=str, help='Location of checkpoint file.')
+    parser.add_argument('--random_seed', type=int, default=8888, help="random seed")
+    parser.add_argument('--np_random_seed', type=int, default=18888, help="np random seed")
+
+    arguments = parser.parse_args()
+    return arguments
+
+args = arg_parse()
+
+
 
 # jax.distributed.initialize(
 #     coordinator_address=args.coordinator_address, #"128.5.20.2:8888",
@@ -229,7 +221,7 @@ def infer():
     start_time_save = datetime.datetime.now()
     feat_converted, aux_result_converted = convert_feat_aux_to_numpy(feat_, aux_result)
 
-    process_pdb(pdb_path,out_pkl_path, feat_converted, aux_result_converted, seq_len_tmp)
+    process_pdb(pdb_path, out_pkl_path, feat_converted, aux_result_converted, seq_len_tmp)
 
     # with multiprocessing.Pool(processes=multiprocessing.cpu_count()//2) as pool:
     #     pool.imap(
