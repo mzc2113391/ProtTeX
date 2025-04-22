@@ -32,6 +32,15 @@ python ./scripts/function_inference.py --input_protein_pkl ./input/input_dit_rec
 #output: The provided protein structure has been assessed, and it is likely to play a role in 3'-5'-RNA exonuclease activity, nucleic acid binding according to its structural characteristics.
 ```
 
+### structure prediction
+To do soon
+
+### multiconformation sampling
+To do soon
+
+### controllable design
+To do soon
+
 ## Citation
 ```python
 @article{lin2023tokenizing,
