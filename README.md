@@ -13,6 +13,7 @@ Create a conda environment for ProtTeX:
 mamba env create -f environment.yml
 ```
 Download the ProToken model param from [Here](https://drive.google.com/file/d/11G4ImYm14f_s2jpqrpyav8jiM25JO3uE/view?usp=sharing) and put it in ./ProToken/ckpts
+
 Download the ProtTeX model param from [Here](https://huggingface.co/mzcwd/ProtTeX) and put it in ./model/ProtTeX
 
 
