@@ -10,7 +10,7 @@ ProtTeX is built upon [ProToken](https://github.com/issacAzazel/ProToken.git), w
 
 Create a conda environment for ProtTeX:
 ```bash
-mamba env create -f environment.yml
+mamba env create -f environment.yaml
 ```
 Download the ProToken model param from [Here](https://drive.google.com/file/d/11G4ImYm14f_s2jpqrpyav8jiM25JO3uE/view?usp=sharing) and put it in ./ProToken/ckpts
 
