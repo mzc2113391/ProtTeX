@@ -21,13 +21,13 @@ Download the ProtTeX model param from [Here](https://huggingface.co/mzcwd/ProtTe
 To infer the function of protein, first tokenize it.
 
 ```bash
-python ./scripts/tokenize.py ./input/input.pdb
+python ./scripts/tokenize.py --pdb_path ./input/input.pdb
 ```
 
 Then you can run the function inference example
 
 ```bash
-python ./scripts/function_inference.py ./input/input_dit_recon.pkl
+python ./scripts/function_inference.py --input_protein_pkl ./input/input_dit_recon.pkl
 #output: The provided protein structure has been assessed, and it is likely to play a role in 3'-5'-RNA exonuclease activity, nucleic acid binding according to its structural characteristics.
 ```
 
