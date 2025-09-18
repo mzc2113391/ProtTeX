@@ -22,6 +22,7 @@ Download the ProtTeX model param from [Here](https://huggingface.co/mzcwd/ProtTe
 To infer the function of protein, first tokenize it.
 
 ```bash
+export CUDA_VISIBLE_DEVICES=0
 python ./scripts/tokenize.py --pdb_path ./input/input.pdb
 ```
 
