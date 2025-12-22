@@ -18,12 +18,12 @@ Download the ProtTeX model param from [Here](https://huggingface.co/mzcwd/ProtTe
 
 
 ## Using ProtTeX
-### function inference
+### Function inference
 To infer the function of protein, first tokenize it.
 
 ```bash
 export CUDA_VISIBLE_DEVICES=0
-python ./scripts/tokenize.py --pdb_path ./input/input.pdb
+python ./scripts/tokenize_pdb.py --pdb_path ./input/input.pdb
 ```
 
 Then you can run the function inference example
@@ -33,34 +33,52 @@ python ./scripts/function_inference.py --input_protein_pkl ./input/input_dit_rec
 #output: The provided protein structure has been assessed, and it is likely to play a role in 3'-5'-RNA exonuclease activity, nucleic acid binding according to its structural characteristics.
 ```
 
-### structure prediction
-To do soon
+### Structure prediction
+First generate language text.
+```bash
+python ./scripts/function_inference.py --input_seq MKIVLATRNKGKIREIEEILKDFPIELLSLADFPELPEVVEDGKTFEENAVKKAVTVAKATGLLALADDSGL --output_pkl ./output/output_st.pkl
+```
+Then detokenize to generate the structure.
+```bash
+python ./scripts/detokenize_pdb.py --input_path ./output/output_st.pkl --output_dir ./output
+```
 
-### multiconformation sampling
-To do soon
+### Multiconformation sampling
+First generate language text.
+```bash
+python ./scripts/multiconformation_samplling.py --input_seq MKIVLATRNKGKIREIEEILKDFPIELLSLADFPELPEVVEDGKTFEENAVKKAVTVAKATGLLALADDSGL --output_pkl ./output/output_st.pkl
+```
+Then detokenize to generate all structures.
+```bash
+python ./scripts/detokenize_pdb.py --input_path ./output/output_st.pkl --output_dir ./output
+```
 
-### controllable design
-To do soon
+### Controllable design
+First generate language text.
+```bash
+python ./scripts/controllable_design.py --input_seq MKIVLATRNKGKIREIEEILKDFPIELLSLADFPELPEVVEDGKTFEENAVKKAVTVAKATGLLALADDSGL --output_pkl ./output/output_st.pkl
+```
+Then detokenize to generate all structures.
+```bash
+python ./scripts/detokenize_pdb.py --input_path ./output/output_st.pkl --output_dir ./output
+```
 
 ## Citation
 ```python
 @article{lin2023tokenizing,
     title={Tokenizing Foldable Protein Structures with Machine-Learned Artificial Amino-Acid Vocabulary},
     author={Lin, Xiaohan and Chen, Zhenyu and Li, Yanheng and Ma, Zicheng and Fan, Chuanliu and Cao, Ziqiang and Feng, Shihao and Gao, Yi Qin and Zhang, Jun},
-    journal={bioRxiv},
-    pages={2023--11},
-    year={2023},
-    publisher={Cold Spring Harbor Laboratory}
+    journal={Chemical Science},
+    url={https://pubs.rsc.org/en/Content/ArticleLanding/2025/SC/D5SC02055G},
+    doi={10.1039/D5SC02055G}
 }
 @article{ma2025prottexstructureincontextreasoningediting,
       title={ProtTeX: Structure-In-Context Reasoning and Editing of Proteins with Large Language Models}, 
       author={Zicheng Ma and Chuanliu Fan and Zhicong Wang and Zhenyu Chen and Xiaohan Lin and Yanheng Li and Shihao Feng and Jun Zhang and Ziqiang Cao and Yi Qin Gao},
       year={2025},
-      journal={arXiv preprint arXiv:2503.08179},
-      eprint={2503.08179},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.BM},
-      url={https://arxiv.org/abs/2503.08179},
+      journal={Journal of Chemical Information and Modeling},
+      url={https://pubs.acs.org/doi/10.1021/acs.jcim.5c00585},
+      doi={10.1021/acs.jcim.5c00585}
 }
 ```
 
