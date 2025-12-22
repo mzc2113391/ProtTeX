@@ -68,6 +68,7 @@ python ./scripts/detokenize_pdb.py --input_path ./output/output_st.pkl --output_
 @article{lin2023tokenizing,
     title={Tokenizing Foldable Protein Structures with Machine-Learned Artificial Amino-Acid Vocabulary},
     author={Lin, Xiaohan and Chen, Zhenyu and Li, Yanheng and Ma, Zicheng and Fan, Chuanliu and Cao, Ziqiang and Feng, Shihao and Gao, Yi Qin and Zhang, Jun},
+    year={2025},
     journal={Chemical Science},
     url={https://pubs.rsc.org/en/Content/ArticleLanding/2025/SC/D5SC02055G},
     doi={10.1039/D5SC02055G}
