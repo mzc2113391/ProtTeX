@@ -74,12 +74,12 @@ python ./scripts/detokenize_pdb.py --input_path ./output/output_st.pkl --output_
     doi={10.1039/D5SC02055G}
 }
 @article{ma2025prottexstructureincontextreasoningediting,
-      title={ProtTeX: Structure-In-Context Reasoning and Editing of Proteins with Large Language Models}, 
-      author={Zicheng Ma and Chuanliu Fan and Zhicong Wang and Zhenyu Chen and Xiaohan Lin and Yanheng Li and Shihao Feng and Jun Zhang and Ziqiang Cao and Yi Qin Gao},
-      year={2025},
-      journal={Journal of Chemical Information and Modeling},
-      url={https://pubs.acs.org/doi/10.1021/acs.jcim.5c00585},
-      doi={10.1021/acs.jcim.5c00585}
+    title={ProtTeX: Structure-In-Context Reasoning and Editing of Proteins with Large Language Models}, 
+    author={Zicheng Ma and Chuanliu Fan and Zhicong Wang and Zhenyu Chen and Xiaohan Lin and Yanheng Li and Shihao Feng and Jun Zhang and Ziqiang Cao and Yi Qin Gao},
+    year={2025},
+    journal={Journal of Chemical Information and Modeling},
+    url={https://pubs.acs.org/doi/10.1021/acs.jcim.5c00585},
+    doi={10.1021/acs.jcim.5c00585}
 }
 ```
 
