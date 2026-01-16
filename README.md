@@ -36,7 +36,7 @@ python ./scripts/function_inference.py --input_protein_pkl ./input/input_dit_rec
 ### Structure prediction
 First generate language text.
 ```bash
-python ./scripts/function_inference.py --input_seq MKIVLATRNKGKIREIEEILKDFPIELLSLADFPELPEVVEDGKTFEENAVKKAVTVAKATGLLALADDSGL --output_pkl ./output/output_st.pkl
+python ./scripts/structure_prediction.py --input_seq MKIVLATRNKGKIREIEEILKDFPIELLSLADFPELPEVVEDGKTFEENAVKKAVTVAKATGLLALADDSGL --output_pkl ./output/output_st.pkl
 ```
 Then detokenize to generate the structure.
 ```bash
